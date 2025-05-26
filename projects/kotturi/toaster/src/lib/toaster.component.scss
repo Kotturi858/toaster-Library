@@ -1,0 +1,153 @@
+.toaster-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toaster-container > * {
+  pointer-events: auto;
+}
+
+.toaster-base {
+  min-height: 80px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 300px;
+  margin: 0;
+  padding: 0 10px;
+  gap: 10px;
+  position: relative;
+  border-radius: 10px;
+  transform: scale(1);
+}
+
+.toaster-icon {
+  width: 100%;
+  max-width: 30px;
+  border-radius: 10px;
+}
+
+.green-taster {
+  @extend .toaster-base;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 224, 183, 0.6),
+    rgba(168, 224, 183, 0.2),
+    rgba(168, 224, 183, 0.4)
+  );
+  box-shadow: 0 4px 15px rgba(57, 125, 84, 0.3);
+}
+
+.success-svg {
+  @extend .toaster-icon;
+  background-color: #397d54;
+}
+
+.red-taster {
+  @extend .toaster-base;
+  background: linear-gradient(
+    135deg,
+    rgba(224, 168, 168, 0.6),
+    rgba(224, 168, 168, 0.2),
+    rgba(224, 168, 168, 0.4)
+  );
+  box-shadow: 0 4px 15px rgba(125, 57, 57, 0.3);
+}
+
+.error-svg {
+  @extend .toaster-icon;
+  background-color: #751102;
+}
+
+.info-taster {
+  @extend .toaster-base;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 198, 224, 0.6),
+    rgba(168, 198, 224, 0.2),
+    rgba(168, 198, 224, 0.4)
+  );
+  box-shadow: 0 4px 15px rgba(57, 84, 125, 0.3);
+}
+
+.info-svg {
+  @extend .toaster-icon;
+  background-color: #015c98;
+}
+
+.warn-taster {
+  @extend .toaster-base;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 236, 168, 0.6),
+    rgba(255, 236, 168, 0.2),
+    rgba(255, 236, 168, 0.4)
+  );
+  box-shadow: 0 4px 15px rgba(191, 144, 0, 0.3);
+}
+
+.warn-svg {
+  @extend .toaster-icon;
+  background-color: #ffdd00;
+}
+
+.progress-container {
+  width: 100%;
+  height: 5px;
+  background-color: transparent;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  --duration: 5s; /* Default duration */
+  animation: shrinkBar var(--duration) linear forwards;
+}
+
+// Pause animation on hover
+.toaster-base:hover .progress-bar,
+.progress-bar.paused {
+  animation-play-state: paused;
+}
+
+@keyframes shrinkBar {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0%;
+  }
+}
+
+.toaster-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", "Liberation Sans", Arial, sans-serif;
+}
+
+.toaster-content > div {
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+  top: 0.1rem;
+  margin-bottom: 6px;
+}

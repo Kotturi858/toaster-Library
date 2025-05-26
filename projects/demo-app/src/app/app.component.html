@@ -1,0 +1,46 @@
+<main>
+  <div style="text-align: center">
+    <h1>Welcome to {{ title }}</h1>
+  </div>
+
+  <lib-toaster toasterPosition="bottom"></lib-toaster>
+
+  <div style="margin-top: 20px; text-align: center; padding: 20px">
+    <h2>Toaster Demo Controls</h2>
+    <div
+      style="
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+      "
+    >
+      <button (click)="addSuccessToast()">
+        Add Success
+      </button>
+      <button (click)="addErrorToast()">
+        Add Error
+      </button>
+      <button (click)="addInfoToast()">
+        Add Info
+      </button>
+      <button (click)="addWarningToast()">
+        Add Warning
+      </button>
+    </div>
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center">
+      <label for="duration">Define duration: </label>
+      <input type="number" id="duration" [(ngModel)]="duration" />
+    </div>
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center">
+      <label for="message">Define message: </label>
+      <textarea id="message" [(ngModel)]="message" rows="4" cols="50" ></textarea>
+    </div>
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center">
+      <label for="toastTitle">Define toast title: </label>
+      <input type="text" id="toastTitle" [(ngModel)]="toastTitle" />
+    </div>
+  </div>
+</main>
+
+<router-outlet />
