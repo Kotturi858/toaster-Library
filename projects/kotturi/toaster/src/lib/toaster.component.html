@@ -1,7 +1,11 @@
 <div
   class="toaster-container"
-  [class.top-position]="toasterPosition === 'top'"
-  [class.bottom-position]="toasterPosition === 'bottom'"
+  [class.top-left-position]="toasterPosition === 'top-left'"
+  [class.top-center-position]="toasterPosition === 'top-center'"
+  [class.top-right-position]="toasterPosition === 'top-right'"
+  [class.bottom-left-position]="toasterPosition === 'bottom-left'"
+  [class.bottom-center-position]="toasterPosition === 'bottom-center'"
+  [class.bottom-right-position]="toasterPosition === 'bottom-right'"
 >
   <main
     *ngFor="let toaster of toasters"

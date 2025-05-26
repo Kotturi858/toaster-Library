@@ -108,19 +108,19 @@ export class ToasterService {
   }
 
   showSuccess(message: string, title: string = 'Success', duration?: number) {
-    return this.addToaster('success', title, message, duration);
+    return this.addToaster('success', title, message || 'The msg is displayed here.', duration);
   }
 
   showError(message: string, title: string = 'Error', duration?: number) {
-    return this.addToaster('error', title, message, duration);
+    return this.addToaster('error', title, message || 'The msg is displayed here.', duration);
   }
 
   showInfo(message: string, title: string = 'Information', duration?: number) {
-    return this.addToaster('info', title, message, duration);
+    return this.addToaster('info', title, message || 'The msg is displayed here.', duration);
   }
 
   showWarning(message: string, title: string = 'Warning', duration?: number) {
-    return this.addToaster('warning', title, message, duration);
+    return this.addToaster('warning', title, message || 'The msg is displayed here.', duration);
   }
 }
 

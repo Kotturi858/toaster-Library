@@ -3,7 +3,7 @@
     <h1>Welcome to {{ title }}</h1>
   </div>
 
-  <lib-toaster toasterPosition="bottom"></lib-toaster>
+  <lib-toaster [toasterPosition]="toasterPosition"></lib-toaster>
 
   <div style="margin-top: 20px; text-align: center; padding: 20px">
     <h2>Toaster Demo Controls</h2>
@@ -28,17 +28,25 @@
         Add Warning
       </button>
     </div>
-    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center">
-      <label for="duration">Define duration: </label>
-      <input type="number" id="duration" [(ngModel)]="duration" />
-    </div>
-    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center">
-      <label for="message">Define message: </label>
-      <textarea id="message" [(ngModel)]="message" rows="4" cols="50" ></textarea>
-    </div>
-    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center">
-      <label for="toastTitle">Define toast title: </label>
-      <input type="text" id="toastTitle" [(ngModel)]="toastTitle" />
+    <div style="margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto">
+      <div style="display: grid; grid-template-columns: 200px 1fr; gap: 15px; align-items: center">
+        <label for="duration" style="text-align: right">Duration (seconds): </label>
+        <input type="number" id="duration" [(ngModel)]="duration" style="padding: 8px" />
+        
+        <label for="toastTitle" style="text-align: right">Toast title: </label>
+        <input type="text" id="toastTitle" [(ngModel)]="toastTitle" style="padding: 8px" />
+        
+        <label for="message" style="text-align: right">Message:* </label>
+        <textarea id="message" [(ngModel)]="message" rows="4" style="padding: 8px"></textarea>
+        
+        <label for="toasterPosition" style="text-align: right">Toaster position: </label>
+        <select id="toasterPosition" [(ngModel)]="toasterPosition" style="padding: 8px">
+          <option value="top-left">Top Left</option>
+          <option value="top-right">Top Right</option>
+          <option value="bottom-left">Bottom Left</option>
+          <option value="bottom-right">Bottom Right</option>
+        </select>
+      </div>
     </div>
   </div>
 </main>

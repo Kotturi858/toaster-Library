@@ -1,12 +1,45 @@
 .toaster-container {
   position: fixed;
-  bottom: 1rem;
   right: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   z-index: 9999;
   pointer-events: none;
+}
+
+.top-left-position {
+  top: 1rem;
+  left: 1rem;
+}
+
+.bottom-left-position {
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.top-center-position {
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: top;
+}
+
+.bottom-center-position {
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom;
+}
+
+.top-right-position {
+  top: 1rem;
+  right: 1rem;
+}
+
+.bottom-right-position {
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .toaster-container > * {

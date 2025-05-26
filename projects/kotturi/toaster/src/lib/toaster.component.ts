@@ -19,7 +19,7 @@ import { ToasterService, ToasterType, Toaster } from './toaster.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToasterComponent implements OnInit, OnDestroy {
-  @Input() toasterPosition: 'top' | 'bottom' = 'bottom';
+  @Input() toasterPosition: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right' = 'bottom-left';
   @Input() themeService: 'dark' | 'light' = 'dark';
 
   // Array of toaster notifications

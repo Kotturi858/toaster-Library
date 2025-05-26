@@ -16,6 +16,7 @@ export class AppComponent {
   duration = 5;
   message = 'The msg is displayed here.';
   toastTitle = 'Toast Title';
+  toasterPosition: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right' = 'bottom-left';
   
   constructor(private toasterService: ToasterService) {}
 
