@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ToasterModule, ToasterService } from "../../../kotturi/toaster/src/public-api";
+import {
+  ToasterModule,
+  ToasterService,
+} from '../../../kotturi/toaster/src/public-api';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,23 +19,43 @@ export class AppComponent {
   duration = 5;
   message = 'The msg is displayed here.';
   toastTitle = 'Toast Title';
-  toasterPosition: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right' = 'bottom-left';
-  
+  toasterPosition:
+    | 'top-left'
+    | 'top-center'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom-center'
+    | 'bottom-right' = 'bottom-left';
+  // In your component
+  currentTheme: 'light' | 'dark' = 'dark';
+
+  toggleTheme() {
+    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+  }
+
   constructor(private toasterService: ToasterService) {}
 
   addSuccessToast() {
-    this.toasterService.showSuccess(this.message, this.toastTitle, this.duration);
+    this.toasterService.showSuccess(
+      this.message,
+      this.toastTitle,
+      this.duration
+    );
   }
-  
+
   addErrorToast() {
     this.toasterService.showError(this.message, this.toastTitle, this.duration);
   }
-  
+
   addInfoToast() {
     this.toasterService.showInfo(this.message, this.toastTitle, this.duration);
   }
-  
+
   addWarningToast() {
-    this.toasterService.showWarning(this.message, this.toastTitle, this.duration);
+    this.toasterService.showWarning(
+      this.message,
+      this.toastTitle,
+      this.duration
+    );
   }
 }

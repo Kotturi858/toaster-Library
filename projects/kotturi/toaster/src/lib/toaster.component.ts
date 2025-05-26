@@ -95,19 +95,35 @@ export class ToasterComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Get progress bar color based on type
+  // Get progress bar color based on type and theme
   getProgressBarColor(type: ToasterType): string {
-    switch (type) {
-      case 'success':
-        return '#397d54';
-      case 'error':
-        return '#a72f1d';
-      case 'info':
-        return '#88cdf6';
-      case 'warning':
-        return '#ffed00';
-      default:
-        return '#397d54';
+    if (this.themeService === 'light') {
+      switch (type) {
+        case 'success':
+          return '#4caf50';
+        case 'error':
+          return '#f44336';
+        case 'info':
+          return '#2196f3';
+        case 'warning':
+          return '#ff9800';
+        default:
+          return '#4caf50';
+      }
+    } else {
+      // Dark theme (default)
+      switch (type) {
+        case 'success':
+          return '#397d54';
+        case 'error':
+          return '#a72f1d';
+        case 'info':
+          return '#88cdf6';
+        case 'warning':
+          return '#ffed00';
+        default:
+          return '#397d54';
+      }
     }
   }
 }

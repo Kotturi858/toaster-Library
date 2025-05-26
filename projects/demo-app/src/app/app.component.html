@@ -3,7 +3,7 @@
     <h1>Welcome to {{ title }}</h1>
   </div>
 
-  <lib-toaster [toasterPosition]="toasterPosition"></lib-toaster>
+  <lib-toaster [themeService]="currentTheme" [toasterPosition]="toasterPosition"></lib-toaster>
 
   <div style="margin-top: 20px; text-align: center; padding: 20px">
     <h2>Toaster Demo Controls</h2>
@@ -47,6 +47,7 @@
           <option value="bottom-right">Bottom Right</option>
         </select>
       </div>
+      <button style="margin-top: 20px" (click)="toggleTheme()">Toggle Theme</button>
     </div>
   </div>
 </main>

@@ -1,3 +1,89 @@
+// Theme variables
+$dark-theme-success-bg: linear-gradient(
+  135deg,
+  rgba(168, 224, 183, 0.6),
+  rgba(168, 224, 183, 0.2),
+  rgba(168, 224, 183, 0.4)
+);
+$dark-theme-success-shadow: rgba(57, 125, 84, 0.3);
+$dark-theme-success-icon-bg: #397d54;
+$dark-theme-success-progress: #397d54;
+
+$dark-theme-error-bg: linear-gradient(
+  135deg,
+  rgba(224, 168, 168, 0.6),
+  rgba(224, 168, 168, 0.2),
+  rgba(224, 168, 168, 0.4)
+);
+$dark-theme-error-shadow: rgba(125, 57, 57, 0.3);
+$dark-theme-error-icon-bg: #751102;
+$dark-theme-error-progress: #a72f1d;
+
+$dark-theme-info-bg: linear-gradient(
+  135deg,
+  rgba(168, 198, 224, 0.6),
+  rgba(168, 198, 224, 0.2),
+  rgba(168, 198, 224, 0.4)
+);
+$dark-theme-info-shadow: rgba(57, 84, 125, 0.3);
+$dark-theme-info-icon-bg: #015c98;
+$dark-theme-info-progress: #88cdf6;
+
+$dark-theme-warning-bg: linear-gradient(
+  135deg,
+  rgba(255, 236, 168, 0.6),
+  rgba(255, 236, 168, 0.2),
+  rgba(255, 236, 168, 0.4)
+);
+$dark-theme-warning-shadow: rgba(191, 144, 0, 0.3);
+$dark-theme-warning-icon-bg: #ffdd00;
+$dark-theme-warning-progress: #ffed00;
+
+// Light theme variables
+$light-theme-success-bg: linear-gradient(
+  135deg,
+  rgba(220, 242, 225, 0.95),
+  rgba(220, 242, 225, 0.85),
+  rgba(220, 242, 225, 0.9)
+);
+$light-theme-success-shadow: rgba(57, 125, 84, 0.2);
+$light-theme-success-icon-bg: #4caf50;
+$light-theme-success-progress: #4caf50;
+
+$light-theme-error-bg: linear-gradient(
+  135deg,
+  rgba(255, 235, 235, 0.95),
+  rgba(255, 235, 235, 0.85),
+  rgba(255, 235, 235, 0.9)
+);
+$light-theme-error-shadow: rgba(125, 57, 57, 0.2);
+$light-theme-error-icon-bg: #f44336;
+$light-theme-error-progress: #f44336;
+
+$light-theme-info-bg: linear-gradient(
+  135deg,
+  rgba(232, 244, 253, 0.95),
+  rgba(232, 244, 253, 0.85),
+  rgba(232, 244, 253, 0.9)
+);
+$light-theme-info-shadow: rgba(57, 84, 125, 0.2);
+$light-theme-info-icon-bg: #2196f3;
+$light-theme-info-progress: #2196f3;
+
+$light-theme-warning-bg: linear-gradient(
+  135deg,
+  rgba(255, 248, 225, 0.95),
+  rgba(255, 248, 225, 0.85),
+  rgba(255, 248, 225, 0.9)
+);
+$light-theme-warning-shadow: rgba(191, 144, 0, 0.2);
+$light-theme-warning-icon-bg: #ff9800;
+$light-theme-warning-progress: #ff9800;
+
+// Text colors
+$dark-theme-text-color: #ffffff;
+$light-theme-text-color: #333333;
+
 .toaster-container {
   position: fixed;
   right: 1rem;
@@ -65,68 +151,100 @@
   border-radius: 10px;
 }
 
+// Dark theme styles (default)
 .green-taster {
   @extend .toaster-base;
-  background: linear-gradient(
-    135deg,
-    rgba(168, 224, 183, 0.6),
-    rgba(168, 224, 183, 0.2),
-    rgba(168, 224, 183, 0.4)
-  );
-  box-shadow: 0 4px 15px rgba(57, 125, 84, 0.3);
+  background: $dark-theme-success-bg;
+  box-shadow: 0 4px 15px $dark-theme-success-shadow;
 }
 
 .success-svg {
   @extend .toaster-icon;
-  background-color: #397d54;
+  background-color: $dark-theme-success-icon-bg;
 }
 
 .red-taster {
   @extend .toaster-base;
-  background: linear-gradient(
-    135deg,
-    rgba(224, 168, 168, 0.6),
-    rgba(224, 168, 168, 0.2),
-    rgba(224, 168, 168, 0.4)
-  );
-  box-shadow: 0 4px 15px rgba(125, 57, 57, 0.3);
+  background: $dark-theme-error-bg;
+  box-shadow: 0 4px 15px $dark-theme-error-shadow;
 }
 
 .error-svg {
   @extend .toaster-icon;
-  background-color: #751102;
+  background-color: $dark-theme-error-icon-bg;
 }
 
 .info-taster {
   @extend .toaster-base;
-  background: linear-gradient(
-    135deg,
-    rgba(168, 198, 224, 0.6),
-    rgba(168, 198, 224, 0.2),
-    rgba(168, 198, 224, 0.4)
-  );
-  box-shadow: 0 4px 15px rgba(57, 84, 125, 0.3);
+  background: $dark-theme-info-bg;
+  box-shadow: 0 4px 15px $dark-theme-info-shadow;
 }
 
 .info-svg {
   @extend .toaster-icon;
-  background-color: #015c98;
+  background-color: $dark-theme-info-icon-bg;
 }
 
 .warn-taster {
   @extend .toaster-base;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 236, 168, 0.6),
-    rgba(255, 236, 168, 0.2),
-    rgba(255, 236, 168, 0.4)
-  );
-  box-shadow: 0 4px 15px rgba(191, 144, 0, 0.3);
+  background: $dark-theme-warning-bg;
+  box-shadow: 0 4px 15px $dark-theme-warning-shadow;
 }
 
 .warn-svg {
   @extend .toaster-icon;
-  background-color: #ffdd00;
+  background-color: $dark-theme-warning-icon-bg;
+}
+
+// Light theme overrides
+.theme-light {
+  .toaster-base {
+    color: $light-theme-text-color;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .green-taster {
+    background: $light-theme-success-bg;
+    box-shadow: 0 4px 15px $light-theme-success-shadow;
+  }
+  
+  .success-svg {
+    background-color: $light-theme-success-icon-bg;
+  }
+  
+  .red-taster {
+    background: $light-theme-error-bg;
+    box-shadow: 0 4px 15px $light-theme-error-shadow;
+  }
+  
+  .error-svg {
+    background-color: $light-theme-error-icon-bg;
+  }
+  
+  .info-taster {
+    background: $light-theme-info-bg;
+    box-shadow: 0 4px 15px $light-theme-info-shadow;
+  }
+  
+  .info-svg {
+    background-color: $light-theme-info-icon-bg;
+  }
+  
+  .warn-taster {
+    background: $light-theme-warning-bg;
+    box-shadow: 0 4px 15px $light-theme-warning-shadow;
+  }
+  
+  .warn-svg {
+    background-color: $light-theme-warning-icon-bg;
+  }
+}
+
+// Dark theme explicit styles
+.theme-dark {
+  .toaster-base {
+    color: $dark-theme-text-color;
+  }
 }
 
 .progress-container {
@@ -183,4 +301,58 @@
   position: relative;
   top: 0.1rem;
   margin-bottom: 6px;
+}
+
+.close-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  z-index: 10;
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  padding: 0;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.close-icon {
+  width: 16px;
+  height: 16px;
+}
+
+// Light theme close button styles
+.theme-light {
+  .close-button {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+    }
+  }
 }
