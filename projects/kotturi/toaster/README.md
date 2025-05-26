@@ -1,22 +1,132 @@
-# Toaster
+# Kotturi Toaster
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+A lightweight, customizable toast notification library for Angular applications.
 
-## Code scaffolding
+## Features
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- 🎨 Four notification types: Success, Error, Info, and Warning
+- ⏱️ Configurable duration for each toast
+- 📍 Multiple position options (top-left, top-right, bottom-left, bottom-right, top-center, bottom-center)
+- ⏸️ Pause on hover functionality
+- 🌓 Light and dark theme support
+- 🎯 Standalone component compatible with Angular 19+
+
+## Installation
 
 ```bash
-ng generate component component-name
+npm install kotturi-toaster
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Usage
 
-```bash
-ng generate --help
+### 1. Import the ToasterModule in your application
+
+```typescript
+import { ToasterModule } from 'kotturi-toaster';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ToasterModule],
+  // ...
+})
+export class AppComponent {
+  // ...
+}
 ```
 
-## Building
+### 2. Add the toaster component to your template
+
+```html
+<!-- app.component.html -->
+<lib-toaster [toasterPosition]="'bottom-right'"></lib-toaster>
+```
+
+### 3. Inject and use the ToasterService
+
+```typescript
+import { Component } from '@angular/core';
+import { ToasterService } from 'kotturi-toaster';
+
+@Component({
+  // ...
+})
+export class AppComponent {
+  constructor(private toasterService: ToasterService) {}
+
+  showSuccessToast() {
+    this.toasterService.showSuccess('Operation completed successfully!', 'Success', 5);
+  }
+
+  showErrorToast() {
+    this.toasterService.showError('An error occurred!', 'Error', 5);
+  }
+
+  showInfoToast() {
+    this.toasterService.showInfo('This is an informational message.', 'Info', 5);
+  }
+
+  showWarningToast() {
+    this.toasterService.showWarning('Please be cautious!', 'Warning', 5);
+  }
+}
+```
+
+## API Reference
+
+### ToasterComponent
+
+#### Inputs
+
+| Input | Type | Default | Description |
+|-------|------|---------|-------------|
+| toasterPosition | 'top-left' \| 'top-center' \| 'top-right' \| 'bottom-left' \| 'bottom-center' \| 'bottom-right' | 'bottom-left' | Position of the toast notifications on the screen |
+| themeService | 'dark' \| 'light' | 'dark' | Theme of the toast notifications |
+
+### ToasterService
+
+#### Methods
+
+| Method | Parameters | Return | Description |
+|--------|------------|--------|-------------|
+| showSuccess | message: string, title?: string, duration?: number | string (toast ID) | Shows a success toast notification |
+| showError | message: string, title?: string, duration?: number | string (toast ID) | Shows an error toast notification |
+| showInfo | message: string, title?: string, duration?: number | string (toast ID) | Shows an info toast notification |
+| showWarning | message: string, title?: string, duration?: number | string (toast ID) | Shows a warning toast notification |
+| removeToaster | id: string | void | Manually removes a toast notification by ID |
+| pauseToaster | id: string | void | Pauses the timer of a toast notification |
+| resumeToaster | id: string | void | Resumes the timer of a toast notification |
+
+## Customization
+
+The toaster notifications come with default styling, but you can override these styles in your global stylesheet if needed.
+
+## Examples
+
+### Basic Usage
+
+```typescript
+// Show a success toast that will disappear after 5 seconds
+this.toasterService.showSuccess('Your profile has been updated!', 'Success', 5);
+
+// Show an error toast with a custom title and default duration
+this.toasterService.showError('Failed to save changes', 'Update Failed');
+```
+
+### Advanced Usage
+
+```typescript
+// Store toast ID for later reference
+const toastId = this.toasterService.showInfo('Processing your request...', 'Please Wait', 10);
+
+// Later, manually remove the toast when the process completes
+someAsyncProcess().then(() => {
+  this.toasterService.removeToaster(toastId);
+  this.toasterService.showSuccess('Process completed!', 'Done');
+});
+```
+
+## Building and Publishing
 
 To build the library, run:
 
@@ -24,40 +134,17 @@ To build the library, run:
 ng build toaster
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/toaster
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+To publish to npm:
 
 ```bash
-ng test
+cd dist/kotturi/toaster
+npm publish
 ```
 
-## Running end-to-end tests
+## License
 
-For end-to-end (e2e) testing, run:
+MIT
 
-```bash
-ng e2e
-```
+## Author
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Bharath Kotturi
