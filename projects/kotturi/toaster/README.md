@@ -9,6 +9,9 @@ A lightweight, customizable toast notification library for Angular applications.
 - 📍 Multiple position options (top-left, top-right, bottom-left, bottom-right, top-center, bottom-center)
 - ⏸️ Pause on hover functionality
 - 🌓 Light and dark theme support
+- ❌ Close button to dismiss notifications
+- 📊 Progress bar indicating time remaining
+- ✨ Smooth entrance and exit animations
 - 🎯 Standalone component compatible with Angular 19+
 
 ## Installation
@@ -100,6 +103,73 @@ export class AppComponent {
 ## Customization
 
 The toaster notifications come with default styling, but you can override these styles in your global stylesheet if needed.
+
+### Animations
+
+The toaster library includes smooth entrance and exit animations. To ensure animations work properly, you need to import the BrowserAnimationsModule in your application:
+
+```typescript
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  imports: [
+    BrowserAnimationsModule,
+    // other imports...
+  ],
+  // ...
+})
+export class AppModule { }
+```
+
+For standalone applications:
+
+```typescript
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideAnimations(),
+    // other providers...
+  ]
+});
+```
+
+#### Animation Types
+
+The library supports four different animation types for toast notifications:
+
+- `fade`: Smooth fade in/out animation (default)
+- `slide`: Sliding animation from the side
+- `bounce`: Bouncing entrance and exit
+- `zoom`: Zoom in/out animation
+
+#### Setting Animation Type
+
+You can set the animation type using the `setAnimationType` method of the `ToasterService`:
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { ToasterService, AnimationType } from 'kotturi-toaster';
+
+@Component({
+  // ...
+})
+export class AppComponent implements OnInit {
+  constructor(private toasterService: ToasterService) {}
+  
+  ngOnInit() {
+    // Set animation type globally for all toasts
+    this.toasterService.setAnimationType('zoom');
+    
+    // You can also use the AnimationType type for type safety
+    const animationType: AnimationType = 'bounce';
+    this.toasterService.setAnimationType(animationType);
+  }
+}
+```
+
+The animation type you set will apply to all subsequent toast notifications until you change it again.
 
 ## Examples
 

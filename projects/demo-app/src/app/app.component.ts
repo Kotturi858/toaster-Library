@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import {
   ToasterModule,
   ToasterService,
+  AnimationType
 } from '../../../kotturi/toaster/src/public-api';
 import { FormsModule } from '@angular/forms';
 
@@ -28,12 +29,22 @@ export class AppComponent {
     | 'bottom-right' = 'bottom-left';
   // In your component
   currentTheme: 'light' | 'dark' = 'dark';
+  currentAnimation: AnimationType = 'fade';
+  animationTypes: AnimationType[] = ['fade', 'slide', 'bounce', 'zoom'];
 
   toggleTheme() {
     this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
   }
 
-  constructor(private toasterService: ToasterService) {}
+  constructor(private toasterService: ToasterService) {
+    // Set initial animation type
+    this.setAnimationType(this.currentAnimation);
+  }
+
+  setAnimationType(animation: AnimationType) {
+    this.currentAnimation = animation;
+    this.toasterService.setAnimationType(animation);
+  }
 
   addSuccessToast() {
     this.toasterService.showSuccess(

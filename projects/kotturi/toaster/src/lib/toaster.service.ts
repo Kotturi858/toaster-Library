@@ -4,6 +4,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 // Define toaster types
 export type ToasterType = 'success' | 'error' | 'info' | 'warning';
 
+// Define animation types
+export type AnimationType = 'fade' | 'slide' | 'bounce' | 'zoom';
+
 // Define toaster interface
 export interface Toaster {
   id: string;
@@ -12,6 +15,7 @@ export interface Toaster {
   message: string;
   duration: number;
   visible: boolean;
+  animation: AnimationType;
   isPaused?: boolean;
   remainingTime?: number;
   timeoutId?: any;
@@ -32,6 +36,12 @@ export class ToasterService {
   get toasters(): Toaster[] {
     return this.toastersSubject.getValue();
   }
+  private currentAnimation: AnimationType = 'fade';
+
+  setAnimationType(animation: AnimationType) {
+    this.currentAnimation = animation;
+  }
+
   addToaster(type: ToasterType, title: string, message: string, duration?: number) {
     const toasterId = 'toast_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     
@@ -44,6 +54,7 @@ export class ToasterService {
       message, 
       duration: toasterDuration, 
       visible: true,
+      animation: this.currentAnimation,
       isPaused: false,
       startTime: Date.now()
     };

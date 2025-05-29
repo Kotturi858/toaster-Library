@@ -1,43 +1,43 @@
 // Theme variables
 $dark-theme-success-bg: linear-gradient(
   135deg,
-  rgba(168, 224, 183, 0.6),
-  rgba(168, 224, 183, 0.2),
-  rgba(168, 224, 183, 0.4)
+  rgba(38, 94, 55, 0.85),
+  rgba(38, 94, 55, 0.7),
+  rgba(38, 94, 55, 0.8)
 );
-$dark-theme-success-shadow: rgba(57, 125, 84, 0.3);
-$dark-theme-success-icon-bg: #397d54;
-$dark-theme-success-progress: #397d54;
+$dark-theme-success-shadow: rgba(20, 70, 40, 0.5);
+$dark-theme-success-icon-bg: #2ecc71;
+$dark-theme-success-progress: #2ecc71;
 
 $dark-theme-error-bg: linear-gradient(
   135deg,
-  rgba(224, 168, 168, 0.6),
-  rgba(224, 168, 168, 0.2),
-  rgba(224, 168, 168, 0.4)
+  rgba(94, 38, 38, 0.85),
+  rgba(94, 38, 38, 0.7),
+  rgba(94, 38, 38, 0.8)
 );
-$dark-theme-error-shadow: rgba(125, 57, 57, 0.3);
-$dark-theme-error-icon-bg: #751102;
-$dark-theme-error-progress: #a72f1d;
+$dark-theme-error-shadow: rgba(70, 20, 20, 0.5);
+$dark-theme-error-icon-bg: #e74c3c;
+$dark-theme-error-progress: #e74c3c;
 
 $dark-theme-info-bg: linear-gradient(
   135deg,
-  rgba(168, 198, 224, 0.6),
-  rgba(168, 198, 224, 0.2),
-  rgba(168, 198, 224, 0.4)
+  rgba(38, 55, 94, 0.85),
+  rgba(38, 55, 94, 0.7),
+  rgba(38, 55, 94, 0.8)
 );
-$dark-theme-info-shadow: rgba(57, 84, 125, 0.3);
-$dark-theme-info-icon-bg: #015c98;
-$dark-theme-info-progress: #88cdf6;
+$dark-theme-info-shadow: rgba(20, 40, 70, 0.5);
+$dark-theme-info-icon-bg: #3498db;
+$dark-theme-info-progress: #3498db;
 
 $dark-theme-warning-bg: linear-gradient(
   135deg,
-  rgba(255, 236, 168, 0.6),
-  rgba(255, 236, 168, 0.2),
-  rgba(255, 236, 168, 0.4)
+  rgba(94, 87, 38, 0.85),
+  rgba(94, 87, 38, 0.7),
+  rgba(94, 87, 38, 0.8)
 );
-$dark-theme-warning-shadow: rgba(191, 144, 0, 0.3);
-$dark-theme-warning-icon-bg: #ffdd00;
-$dark-theme-warning-progress: #ffed00;
+$dark-theme-warning-shadow: rgba(70, 60, 20, 0.5);
+$dark-theme-warning-icon-bg: #f39c12;
+$dark-theme-warning-progress: #f39c12;
 
 // Light theme variables
 $light-theme-success-bg: linear-gradient(
@@ -134,21 +134,27 @@ $light-theme-text-color: #333333;
 
 .toaster-base {
   min-height: 80px;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 300px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 320px;
   margin: 0;
-  padding: 0 10px;
-  gap: 10px;
+  padding: 0 15px;
+  gap: 12px;
   position: relative;
-  border-radius: 10px;
+  border-radius: 12px;
   transform: scale(1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
 .toaster-icon {
   width: 100%;
-  max-width: 30px;
-  border-radius: 10px;
+  max-width: 32px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 // Dark theme styles (default)
@@ -244,6 +250,8 @@ $light-theme-text-color: #333333;
 .theme-dark {
   .toaster-base {
     color: $dark-theme-text-color;
+    letter-spacing: 0.2px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -304,10 +312,9 @@ $light-theme-text-color: #333333;
 }
 
 .close-button-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 8px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
   z-index: 10;
 }
 
@@ -315,30 +322,38 @@ $light-theme-text-color: #333333;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.3);
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.2s ease;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   padding: 0;
+  opacity: 0.7;
   
   &:hover {
     background-color: rgba(0, 0, 0, 0.5);
     transform: scale(1.1);
+    opacity: 1;
   }
   
   &:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+    opacity: 1;
   }
 }
 
 .close-icon {
-  width: 16px;
-  height: 16px;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // Light theme close button styles

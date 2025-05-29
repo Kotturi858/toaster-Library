@@ -1,4 +1,6 @@
-# ToasterLibrary
+# Kotturi Toaster Library
+
+A lightweight, customizable toast notification library for Angular applications. This project contains both the `kotturi-toaster` library and a demo application showcasing its features.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
 
@@ -53,6 +55,79 @@ ng e2e
 ```
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Library Features
+
+- 🎨 Four notification types: Success, Error, Info, and Warning
+- ⏱️ Configurable duration for each toast
+- 📍 Multiple position options (top-left, top-right, bottom-left, bottom-right, top-center, bottom-center)
+- ⏸️ Pause on hover functionality
+- 🌓 Light and dark theme support
+- ❌ Close button to dismiss notifications
+- 📊 Progress bar indicating time remaining
+- ✨ Smooth entrance and exit animations
+- 🎯 Standalone component compatible with Angular 19+
+
+## Installation
+
+The library is published to npm and can be installed with:
+
+```bash
+npm install kotturi-toaster
+```
+
+## Usage
+
+For detailed usage instructions and API documentation, please see the [library README](./projects/kotturi/toaster/README.md).
+
+### Enabling Animations
+
+The library includes smooth entrance and exit animations. To enable them, you need to import Angular's animation modules:
+
+```typescript
+// For standalone applications
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideAnimations(),
+    // other providers...
+  ]
+});
+```
+
+#### Available Animation Types
+
+The library supports four animation types:
+- `fade` (default): Smooth fade in/out animation
+- `slide`: Sliding animation from the side
+- `bounce`: Bouncing entrance and exit
+- `zoom`: Zoom in/out animation
+
+You can set the animation type using the `ToasterService`:
+
+```typescript
+import { ToasterService } from 'kotturi-toaster';
+
+// In your component
+constructor(private toasterService: ToasterService) {
+  // Set animation type for all toasts
+  this.toasterService.setAnimationType('bounce');
+}
+```
+
+See the [library README](./projects/kotturi/toaster/README.md#animations) for more details.
+
+## Demo Application
+
+This repository includes a demo application that showcases all the features of the toaster library. To run the demo:
+
+```bash
+ng serve
+```
+
+Then navigate to `http://localhost:4200/` in your browser.
 
 ## Additional Resources
 
